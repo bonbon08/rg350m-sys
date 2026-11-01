@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBRETRO_FAKE08
+	bool "libretro-fake08"
+	help
+	  libretro core: PICO-8 (fake-08).

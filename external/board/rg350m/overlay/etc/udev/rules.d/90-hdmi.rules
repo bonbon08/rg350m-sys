@@ -1,0 +1,2 @@
+# Switch the display between the internal panel and HDMI on hotplug.
+SUBSYSTEM=="drm", ACTION=="change", KERNEL=="card[0-9]*", RUN+="/usr/sbin/hdmi-switch"

@@ -1,0 +1,57 @@
+#!/bin/sh
+# Route the display to HDMI when a cable is plugged in, back to the panel
+# when it is removed.
+#
+# The JZ4770 has a single CRTC, so only one output can be active. SDL picks
+# the first *connected* connector, therefore the panel connector is forced
+# "off" while HDMI is in use. The frontend is restarted so it picks up the
+# new output (a running game keeps its output; EmulationStation re-opens the
+# display after the game anyway).
+#
+# Usage: hdmi-switch [auto|lcd|hdmi]   (default: auto, used by udev)
+
+MODE=${1:-auto}
+STATE=/var/run/display-output
+
+HDMI=
+PANEL=
+for c in /sys/class/drm/card*-*; do
+	[ -e "$c/status" ] || continue
+	case "${c##*/}" in
+		*HDMI*) HDMI=$c ;;
+		*) [ -z "$PANEL" ] && PANEL=$c ;;
+	esac
+done
+
+[ -n "$HDMI" ] && [ -n "$PANEL" ] || exit 0
+
+if [ "$MODE" = auto ]; then
+	# Panel "off" is our own forcing, so only the HDMI status counts here.
+	if [ "$(cat "$HDMI/status")" = connected ] && [ ! -e /usr/local/etc/hdmi-disabled ]; then
+		MODE=hdmi
+	else
+		MODE=lcd
+	fi
+fi
+
+[ "$(cat $STATE 2>/dev/null)" = "$MODE" ] && exit 0
+echo "$MODE" > $STATE
+
+BACKLIGHT=$(ls -d /sys/class/backlight/* 2>/dev/null | head -n1)
+
+if [ "$MODE" = hdmi ]; then
+	echo off > "$PANEL/status"
+	[ -n "$BACKLIGHT" ] && echo 4 > "$BACKLIGHT/bl_power"
+else
+	echo detect > "$PANEL/status"
+	[ -n "$BACKLIGHT" ] && echo 0 > "$BACKLIGHT/bl_power"
+fi
+
+# Restart EmulationStation if it currently owns the screen. While a game
+# runs, ES has released the display and will reopen it on the new output.
+if ! pidof retroarch >/dev/null 2>&1; then
+	touch /tmp/es-restart
+	killall -q -TERM emulationstation
+fi
+
+exit 0

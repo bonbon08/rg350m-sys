@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_CAP32
+	bool "libretro-cap32"
+	help
+	  libretro core: Amstrad CPC.
+
+	  https://github.com/libretro/libretro-cap32

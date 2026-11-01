@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_MAME2003_PLUS
+	bool "libretro-mame2003-plus"
+	help
+	  libretro core: Arcade (MAME 0.78+).
+
+	  https://github.com/libretro/mame2003-plus-libretro

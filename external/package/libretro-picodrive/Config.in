@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_PICODRIVE
+	bool "libretro-picodrive"
+	help
+	  libretro core: Mega Drive / Master System / Game Gear / Sega CD / 32X.
+
+	  https://github.com/libretro/picodrive

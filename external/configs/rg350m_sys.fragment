@@ -1,0 +1,29 @@
+
+### RG350M-SYS additions on top of od_gcw0_defconfig ###
+BR2_TARGET_GENERIC_HOSTNAME="rg350m"
+BR2_TARGET_GENERIC_ISSUE="Welcome to RG350M-SYS"
+
+# OpenDingux patches + our fixes for building on current distros
+BR2_GLOBAL_PATCH_DIR="$(TOPDIR)/board/opendingux/patches $(BR2_EXTERNAL_RG350M_SYS_PATH)/patches"
+
+# Only the RG350M device tree is needed
+BR2_LINUX_KERNEL_INTREE_DTS_NAME="ingenic/rg350m"
+
+# Our overlay on top of the OpenDingux one, and the SD card image script
+BR2_ROOTFS_OVERLAY="board/opendingux/gcw0/overlay $(BR2_EXTERNAL_RG350M_SYS_PATH)/board/rg350m/overlay"
+BR2_ROOTFS_POST_BUILD_SCRIPT="board/opendingux/gcw0/cleanup-rootfs.sh board/opendingux/create-modules-fs.sh board/opendingux/create-cmake-wrappers.sh $(BR2_EXTERNAL_RG350M_SYS_PATH)/board/rg350m/post-build.sh"
+BR2_ROOTFS_POST_IMAGE_SCRIPT="board/opendingux/create-opk.sh $(BR2_EXTERNAL_RG350M_SYS_PATH)/board/rg350m/post-image.sh"
+
+# Host tools for the SD card image
+BR2_PACKAGE_HOST_GENIMAGE=y
+BR2_PACKAGE_HOST_DOSFSTOOLS=y
+BR2_PACKAGE_HOST_MTOOLS=y
+BR2_PACKAGE_HOST_E2FSPROGS=y
+
+# The MIPS kernel's "make all" also builds vmlinux.gz.itb, which needs mkimage
+# (OpenDingux's CI has it installed on the host; we build it instead).
+BR2_PACKAGE_HOST_UBOOT_TOOLS=y
+BR2_PACKAGE_HOST_UBOOT_TOOLS_FIT_SUPPORT=y
+
+# Frontend + emulators
+BR2_PACKAGE_RG350M_SYS=y

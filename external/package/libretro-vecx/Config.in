@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_VECX
+	bool "libretro-vecx"
+	help
+	  libretro core: Vectrex.
+
+	  https://github.com/libretro/libretro-vecx

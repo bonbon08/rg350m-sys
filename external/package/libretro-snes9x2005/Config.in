@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_SNES9X2005
+	bool "libretro-snes9x2005"
+	help
+	  libretro core: Super Nintendo.
+
+	  https://github.com/libretro/snes9x2005

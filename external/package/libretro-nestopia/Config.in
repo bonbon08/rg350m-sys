@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_NESTOPIA
+	bool "libretro-nestopia"
+	help
+	  libretro core: NES / Famicom Disk System.
+
+	  https://github.com/libretro/nestopia

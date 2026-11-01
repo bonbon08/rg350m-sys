@@ -1,0 +1,5 @@
+#!/bin/sh
+# Host C++ compiler: GCC >= 16 defaults to C++20 (u8"" literals become
+# char8_t), which breaks e.g. GCC 12's libcody. A -std given by the package
+# itself comes later on the command line and still wins.
+exec /usr/bin/g++ -std=gnu++17 "$@"

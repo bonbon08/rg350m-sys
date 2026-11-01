@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_GENESIS_PLUS_GX
+	bool "libretro-genesis-plus-gx"
+	help
+	  libretro core: Mega Drive / Master System / Game Gear / SG-1000 / Sega CD.
+
+	  https://github.com/libretro/Genesis-Plus-GX

@@ -1,0 +1,43 @@
+#!/bin/sh
+# Main frontend loop: EmulationStation, with GMenu2X as a fallback for OPK
+# apps. Started by /usr/sbin/frontend_start as user "od".
+
+SHARE=/usr/share/rg350m
+ESDIR=$HOME/.emulationstation
+RADIR=$HOME/.retroarch
+
+# First run: seed the configuration from the defaults on the rootfs.
+mkdir -p "$ESDIR" "$RADIR" /media/data/bios
+[ -f "$ESDIR/es_settings.cfg" ] || cp $SHARE/es_settings.cfg "$ESDIR/"
+[ -f "$ESDIR/es_input.cfg" ]    || cp $SHARE/es_input.cfg "$ESDIR/"
+[ -f "$RADIR/retroarch.cfg" ]   || cp $SHARE/retroarch.cfg "$RADIR/"
+
+export SDL_VIDEODRIVER=kmsdrm
+export SDL_AUDIODRIVER=alsa
+
+while true; do
+	rm -f /tmp/es-restart /tmp/es-sysrestart /tmp/es-shutdown
+
+	# Regenerated each start so a second SD card with a roms/ folder is
+	# picked up automatically.
+	$SHARE/gen-es-systems "$ESDIR/es_systems.cfg"
+
+	/usr/share/emulationstation/emulationstation --no-splash \
+		> /var/tmp/emulationstation.log 2>&1
+
+	if [ -e /tmp/es-shutdown ]; then
+		sync
+		sudo /sbin/poweroff
+		exit 0
+	elif [ -e /tmp/es-sysrestart ]; then
+		sync
+		sudo /sbin/reboot
+		exit 0
+	elif [ -e /tmp/es-restart ]; then
+		continue
+	fi
+
+	# "Quit EmulationStation" was chosen: open GMenu2X for OPK apps.
+	# Leaving GMenu2X brings EmulationStation back.
+	/usr/bin/gmenu2x
+done

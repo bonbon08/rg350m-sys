@@ -1,0 +1,14 @@
+config BR2_PACKAGE_RETROARCH
+	bool "retroarch"
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_SDL
+	select BR2_PACKAGE_ALSA_LIB
+	select BR2_PACKAGE_EUDEV
+	select BR2_PACKAGE_ZLIB
+	select BR2_PACKAGE_OPENSSL
+	select BR2_PACKAGE_LIBSHAKE
+	help
+	  RetroArch, built with the upstream OpenDingux beta (rg350_odbeta)
+	  target: SDL 1.2 "sdl_dingux" video driver with IPU scaling.
+
+	  https://www.retroarch.com

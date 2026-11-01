@@ -1,0 +1,30 @@
+gcc: include <memory> before safe-ctype.h
+
+libstdc++ 16 pulls <locale> into <memory>, which breaks on the ctype
+macros from safe-ctype.h when building GCC 12 with a GCC 16 host.
+
+--- a/gcc/system.h	2026-10-29 21:07:32.825477857 +0100
++++ b/gcc/system.h	2026-10-29 21:07:32.826434346 +0100
+@@ -201,6 +201,11 @@
+ #ifdef INCLUDE_STRING
+ # include <string>
+ #endif
++/* Newer libstdc++ pulls <locale> into <memory>, so it has to come before
++   safe-ctype.h as well.  */
++#ifdef INCLUDE_MEMORY
++# include <memory>
++#endif
+ #endif
+ 
+ /* There are an extraordinary number of issues with <ctype.h>.
+@@ -740,10 +745,6 @@
+    namespace, e.g. "_VSTD::abort();", which fails after we use the
+    preprocessor to redefine "abort" as "fancy_abort" below.  */
+ 
+-#ifdef INCLUDE_MEMORY
+-# include <memory>
+-#endif
+-
+ #ifdef INCLUDE_MALLOC_H
+ #if defined(HAVE_MALLINFO) || defined(HAVE_MALLINFO2)
+ #include <malloc.h>

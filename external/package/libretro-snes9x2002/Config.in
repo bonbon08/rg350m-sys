@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_SNES9X2002
+	bool "libretro-snes9x2002"
+	help
+	  libretro core: Super Nintendo (fastest).
+
+	  https://github.com/libretro/snes9x2002

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_ATARI800
+	bool "libretro-atari800"
+	help
+	  libretro core: Atari 5200 / 400 / 800 / XL / XE.
+
+	  https://github.com/libretro/libretro-atari800

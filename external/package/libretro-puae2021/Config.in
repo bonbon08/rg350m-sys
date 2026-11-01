@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBRETRO_PUAE2021
+	bool "libretro-puae2021"
+	help
+	  libretro core: Commodore Amiga (PUAE 2021).

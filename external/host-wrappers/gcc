@@ -1,0 +1,5 @@
+#!/bin/sh
+# Host C compiler for buildroot 2023.11 on modern distros: GCC >= 15 defaults
+# to C23, which many of the old host packages do not compile with. A -std
+# given by the package itself comes later on the command line and still wins.
+exec /usr/bin/gcc -std=gnu17 "$@"

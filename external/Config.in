@@ -1,0 +1,83 @@
+menu "RG350M-SYS"
+
+config BR2_PACKAGE_RG350M_SYS
+	bool "RG350M-SYS frontend and emulators"
+	select BR2_PACKAGE_EMULATIONSTATION
+	select BR2_PACKAGE_RETROARCH
+	select BR2_PACKAGE_ES_THEME_CARBON
+	select BR2_PACKAGE_LIBRETRO_VICE
+	select BR2_PACKAGE_LIBRETRO_PUAE2021
+	select BR2_PACKAGE_LIBRETRO_FAKE08
+	select BR2_PACKAGE_LIBRETRO_ATARI800
+	select BR2_PACKAGE_LIBRETRO_BLUEMSX
+	select BR2_PACKAGE_LIBRETRO_CAP32
+	select BR2_PACKAGE_LIBRETRO_FBALPHA2012
+	select BR2_PACKAGE_LIBRETRO_FCEUMM
+	select BR2_PACKAGE_LIBRETRO_FREEINTV
+	select BR2_PACKAGE_LIBRETRO_FUSE
+	select BR2_PACKAGE_LIBRETRO_GAMBATTE
+	select BR2_PACKAGE_LIBRETRO_GENESIS_PLUS_GX
+	select BR2_PACKAGE_LIBRETRO_GPSP
+	select BR2_PACKAGE_LIBRETRO_GW
+	select BR2_PACKAGE_LIBRETRO_HANDY
+	select BR2_PACKAGE_LIBRETRO_MAME2003_PLUS
+	select BR2_PACKAGE_LIBRETRO_MEDNAFEN_PCE_FAST
+	select BR2_PACKAGE_LIBRETRO_MEDNAFEN_WSWAN
+	select BR2_PACKAGE_LIBRETRO_NESTOPIA
+	select BR2_PACKAGE_LIBRETRO_NXENGINE
+	select BR2_PACKAGE_LIBRETRO_O2EM
+	select BR2_PACKAGE_LIBRETRO_PCSX_REARMED
+	select BR2_PACKAGE_LIBRETRO_PICODRIVE
+	select BR2_PACKAGE_LIBRETRO_POKEMINI
+	select BR2_PACKAGE_LIBRETRO_POTATOR
+	select BR2_PACKAGE_LIBRETRO_PRBOOM
+	select BR2_PACKAGE_LIBRETRO_PROSYSTEM
+	select BR2_PACKAGE_LIBRETRO_RACE
+	select BR2_PACKAGE_LIBRETRO_SNES9X2002
+	select BR2_PACKAGE_LIBRETRO_SNES9X2005
+	select BR2_PACKAGE_LIBRETRO_STELLA2014
+	select BR2_PACKAGE_LIBRETRO_VECX
+	help
+	  EmulationStation, RetroArch and the libretro cores that run
+	  well on the JZ4770.
+
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/emulationstation/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/retroarch/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/es-theme-carbon/Config.in"
+
+menu "libretro cores"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-vice/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-puae2021/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-fake08/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-atari800/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-bluemsx/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-cap32/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-fbalpha2012/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-fceumm/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-freeintv/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-fuse/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-gambatte/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-genesis-plus-gx/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-gpsp/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-gw/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-handy/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-mame2003-plus/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-mednafen-pce-fast/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-mednafen-wswan/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-nestopia/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-nxengine/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-o2em/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-pcsx-rearmed/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-picodrive/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-pokemini/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-potator/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-prboom/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-prosystem/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-race/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-snes9x2002/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-snes9x2005/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-stella2014/Config.in"
+source "$BR2_EXTERNAL_RG350M_SYS_PATH/package/libretro-vecx/Config.in"
+endmenu
+
+endmenu

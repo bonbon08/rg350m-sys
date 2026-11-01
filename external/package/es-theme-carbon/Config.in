@@ -1,0 +1,7 @@
+config BR2_PACKAGE_ES_THEME_CARBON
+	bool "es-theme-carbon"
+	depends on BR2_PACKAGE_EMULATIONSTATION
+	help
+	  Carbon, the default RetroPie theme for EmulationStation.
+
+	  https://github.com/RetroPie/es-theme-carbon

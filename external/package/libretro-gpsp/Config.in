@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_GPSP
+	bool "libretro-gpsp"
+	help
+	  libretro core: Game Boy Advance (MIPS dynarec).
+
+	  https://github.com/libretro/gpsp

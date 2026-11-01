@@ -1,0 +1,43 @@
+# folder	full name	extensions	core (or "native")	theme
+nes	Nintendo Entertainment System	.nes .unf .unif .zip .7z	fceumm	nes
+fds	Famicom Disk System	.fds .zip	fceumm	fds
+snes	Super Nintendo	.smc .sfc .swc .fig .zip .7z	snes9x2005	snes
+gb	Game Boy	.gb .zip .7z	gambatte	gb
+gbc	Game Boy Color	.gbc .gb .zip .7z	gambatte	gbc
+gba	Game Boy Advance	.gba .zip .7z	gpsp	gba
+megadrive	Sega Mega Drive / Genesis	.md .gen .smd .bin .zip .7z	picodrive	megadrive
+mastersystem	Sega Master System	.sms .zip .7z	picodrive	mastersystem
+gamegear	Sega Game Gear	.gg .zip .7z	picodrive	gamegear
+sg-1000	Sega SG-1000	.sg .zip .7z	genesis_plus_gx	sg-1000
+segacd	Sega CD / Mega CD	.cue .chd .iso .m3u	picodrive	segacd
+sega32x	Sega 32X	.32x .zip .7z	picodrive	sega32x
+pcengine	PC Engine / TurboGrafx-16	.pce .zip .7z	mednafen_pce_fast	pcengine
+pce-cd	PC Engine CD	.cue .chd .m3u	mednafen_pce_fast	pce-cd
+psx	Sony PlayStation	.cue .chd .pbp .m3u .iso .img	pcsx_rearmed	psx
+ngp	Neo Geo Pocket	.ngp .zip	race	ngp
+ngpc	Neo Geo Pocket Color	.ngc .ngp .zip	race	ngpc
+wonderswan	WonderSwan	.ws .zip	mednafen_wswan	wonderswan
+wonderswancolor	WonderSwan Color	.wsc .ws .zip	mednafen_wswan	wonderswancolor
+atarilynx	Atari Lynx	.lnx .zip	handy	atarilynx
+atari2600	Atari 2600	.a26 .bin .zip	stella2014	atari2600
+atari5200	Atari 5200	.a52 .bin .zip	atari800	atari5200
+atari7800	Atari 7800	.a78 .bin .zip	prosystem	atari7800
+atari800	Atari 800 / XL / XE	.atr .xex .xfd .cas .car .rom .zip	atari800	atari800
+vectrex	Vectrex	.vec .bin .zip	vecx	vectrex
+colecovision	ColecoVision	.col .rom .zip	bluemsx	colecovision
+msx	MSX / MSX2	.rom .mx1 .mx2 .dsk .cas .zip	bluemsx	msx
+zxspectrum	ZX Spectrum	.tzx .tap .z80 .sna .zip	fuse	zxspectrum
+amstradcpc	Amstrad CPC	.dsk .sna .cdt .zip	cap32	amstradcpc
+fba	FinalBurn Alpha 2012	.zip	fbalpha2012	fba
+neogeo	Neo Geo	.zip	fbalpha2012	neogeo
+mame	MAME 2003-Plus	.zip	mame2003_plus	mame
+pokemini	Pokemon Mini	.min .zip	pokemini	pokemini
+gameandwatch	Game & Watch	.mgw	gw	gameandwatch
+videopac	Magnavox Odyssey2 / Videopac	.bin .zip	o2em	videopac
+intellivision	Intellivision	.int .bin .rom .zip	freeintv	intellivision
+supervision	Watara Supervision	.sv .bin .zip	potator	supervision
+amiga	Commodore Amiga	.adf .adz .dms .ipf .hdf .lha .m3u .zip	puae2021	amiga
+c64	Commodore 64	.d64 .t64 .tap .prg .crt .g64 .m3u .zip	vice_x64	c64
+pico8	PICO-8	.p8 .png	fake08	pico8
+doom	DOOM	.wad	prboom	ports
+tools	Tools	.sh	native	retropie

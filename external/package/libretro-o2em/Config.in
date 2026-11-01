@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_O2EM
+	bool "libretro-o2em"
+	help
+	  libretro core: Magnavox Odyssey2 / Videopac.
+
+	  https://github.com/libretro/libretro-o2em

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBRETRO_VICE
+	bool "libretro-vice"
+	help
+	  libretro core: Commodore 64 (VICE x64).

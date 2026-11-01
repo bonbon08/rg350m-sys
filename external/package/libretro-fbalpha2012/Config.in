@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_FBALPHA2012
+	bool "libretro-fbalpha2012"
+	help
+	  libretro core: Arcade (CPS1/CPS2/Neo Geo/...).
+
+	  https://github.com/libretro/fbalpha2012

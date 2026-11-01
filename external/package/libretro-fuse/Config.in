@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_FUSE
+	bool "libretro-fuse"
+	help
+	  libretro core: ZX Spectrum.
+
+	  https://github.com/libretro/fuse-libretro

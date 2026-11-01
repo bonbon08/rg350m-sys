@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBRETRO_STELLA2014
+	bool "libretro-stella2014"
+	help
+	  libretro core: Atari 2600.
+
+	  https://github.com/libretro/stella2014-libretro

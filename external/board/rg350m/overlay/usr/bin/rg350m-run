@@ -1,0 +1,20 @@
+#!/bin/sh
+# Launch a game from EmulationStation.
+#   rg350m-run <core> <rom>     run <rom> with /usr/lib/libretro/<core>_libretro.so
+#   rg350m-run native <script>  run a shell script (Tools menu)
+
+CORE=$1
+ROM=$2
+LOG=/var/tmp/rg350m-run.log
+
+if [ "$CORE" = native ]; then
+	exec /bin/sh "$ROM" > $LOG 2>&1
+fi
+
+CORE_SO=/usr/lib/libretro/${CORE}_libretro.so
+if [ ! -r "$CORE_SO" ]; then
+	echo "Core not found: $CORE_SO" > $LOG
+	exit 1
+fi
+
+exec /usr/bin/retroarch -L "$CORE_SO" "$ROM" > $LOG 2>&1

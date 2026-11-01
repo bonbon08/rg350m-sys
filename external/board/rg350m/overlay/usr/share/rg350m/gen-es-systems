@@ -1,0 +1,47 @@
+#!/bin/sh
+# Write es_systems.cfg from systems.tsv.
+# ROMs are taken from the second SD card if it has a "roms" folder,
+# otherwise from the data partition (/media/data/roms).
+#
+# Usage: gen-es-systems <output file>
+
+OUT=$1
+TABLE=${TABLE:-/usr/share/rg350m/systems.tsv}
+
+ROMROOT=/media/data/roms
+for d in /media/*/roms; do
+	case "$d" in
+		/media/data/*) ;;
+		*) [ -d "$d" ] && ROMROOT=$d && break ;;
+	esac
+done
+
+for sys in $(grep -v '^#' $TABLE | cut -f1); do
+	[ "$sys" = tools ] || mkdir -p "$ROMROOT/$sys" 2>/dev/null
+done
+
+awk -F '\t' -v root="$ROMROOT" '
+function xml(s) { gsub(/&/, "\\&amp;", s); gsub(/</, "\\&lt;", s); gsub(/>/, "\\&gt;", s); return s }
+BEGIN { print "<?xml version=\"1.0\"?>"; print "<systemList>" }
+/^#/ || NF < 5 { next }
+{
+	exts = $3 " " toupper($3)
+	if ($4 == "native") {
+		path = "/usr/share/rg350m/" $1
+		cmd = "/usr/bin/rg350m-run native %ROM%"
+	} else {
+		path = root "/" $1
+		cmd = "/usr/bin/rg350m-run " $4 " %ROM%"
+	}
+	print "  <system>"
+	print "    <name>" $1 "</name>"
+	print "    <fullname>" xml($2) "</fullname>"
+	print "    <path>" path "</path>"
+	print "    <extension>" exts "</extension>"
+	print "    <command>" cmd "</command>"
+	print "    <platform>" $1 "</platform>"
+	print "    <theme>" $5 "</theme>"
+	print "  </system>"
+}
+END { print "</systemList>" }
+' $TABLE > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
